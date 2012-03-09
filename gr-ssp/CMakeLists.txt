@@ -105,6 +105,7 @@ include_directories(
 )
 
 link_directories(
+    ${CMAKE_SOURCE_DIR}/kernel
     ${Boost_LIBRARY_DIRS}
     ${GRUEL_LIBRARY_DIRS}
     ${GNURADIO_CORE_LIBRARY_DIRS}
@@ -130,6 +131,7 @@ add_custom_target(uninstall
 # Add subdirectories
 ########################################################################
 add_subdirectory(include)
+add_subdirectory(kernel)
 add_subdirectory(lib)
 add_subdirectory(swig)
 add_subdirectory(python)

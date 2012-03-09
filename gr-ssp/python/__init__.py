@@ -19,7 +19,7 @@
 # The presence of this file turns this directory into a Python package
 
 '''
-This is the GNU Radio HOWTO module. Place your Python package
+This is the GNU Radio SSP module. Place your Python package
 description here (python/__init__.py).
 '''
 
@@ -41,8 +41,8 @@ if _RTLD_GLOBAL != 0:
 # ----------------------------------------------------------------
 
 
-# import swig generated symbols into the howto namespace
-from howto_swig import *
+# import swig generated symbols into the ssp namespace
+from ssp_swig import *
 
 # import any pure python here
 #
