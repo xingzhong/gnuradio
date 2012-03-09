@@ -18,6 +18,9 @@
  * along with GNU Radio; see the file COPYING.  If not, write to
  * the Free Software Foundation, Inc., 51 Franklin Street,
  * Boston, MA 02110-1301, USA.
+ * 
+ * ${Header} 
+ * by ${Author} at ${Today}
  */
 
 /*
@@ -25,21 +28,21 @@
  * of probing for features, options etc.  It should be the first
  * file included in your .cc file.
  */
-#ifdef HAVE_CONFIG_H
-#include "config.h"
-#endif
+\#ifdef HAVE_CONFIG_H
+\#include "config.h"
+\#endif
 
-#include <ssp_square2_ff.h>
-#include <gr_io_signature.h>
+\#include <${funcName}.h>
+\#include <gr_io_signature.h>
 
 /*
- * Create a new instance of howto_square2_ff and return
+ * Create a new instance of ${funcName} and return
  * a boost shared_ptr.  This is effectively the public constructor.
  */
-ssp_square2_ff_sptr 
-ssp_make_square2_ff ()
+${funcName}_sptr 
+${funcName}_make ()
 {
-  return gnuradio::get_initial_sptr(new ssp_square2_ff ());
+  return gnuradio::get_initial_sptr(new ${funcName} ());
 }
 
 /*
@@ -59,10 +62,10 @@ static const int MAX_OUT = 1;	// maximum number of output streams
 /*
  * The private constructor
  */
-ssp_square2_ff::ssp_square2_ff ()
-  : gr_sync_block ("square2_ff",
-		   gr_make_io_signature (MIN_IN, MAX_IN, sizeof (float)),
-		   gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (float)))
+${funcName}::${funcName} ()
+  : gr_block ("${funcName}",
+	      gr_make_io_signature (MIN_IN, MAX_IN, sizeof (float)),
+	      gr_make_io_signature (MIN_OUT, MAX_OUT, sizeof (float)))
 {
   // nothing else required in this example
 }
@@ -70,15 +73,16 @@ ssp_square2_ff::ssp_square2_ff ()
 /*
  * Our virtual destructor.
  */
-ssp_square2_ff::~ssp_square2_ff ()
+${funcName}::~${funcName} ()
 {
   // nothing else required in this example
 }
 
 int 
-ssp_square2_ff::work (int noutput_items,
-			gr_vector_const_void_star &input_items,
-			gr_vector_void_star &output_items)
+${funcName}::general_work (int noutput_items,
+			       gr_vector_int &ninput_items,
+			       gr_vector_const_void_star &input_items,
+			       gr_vector_void_star &output_items)
 {
   const float *in = (const float *) input_items[0];
   float *out = (float *) output_items[0];
@@ -86,6 +90,11 @@ ssp_square2_ff::work (int noutput_items,
   for (int i = 0; i < noutput_items; i++){
     out[i] = in[i] * in[i];
   }
+
+  // Tell runtime system how many input items we consumed on
+  // each input stream.
+
+  consume_each (noutput_items);
 
   // Tell runtime system how many output items we produced.
   return noutput_items;

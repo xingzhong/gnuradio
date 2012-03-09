@@ -1,6 +1,6 @@
 /* -*- c++ -*- */
 /*
- * Copyright 2011 Free Software Foundation, Inc.
+ * Copyright 2004 Free Software Foundation, Inc.
  * 
  * This file is part of GNU Radio
  * 
@@ -14,19 +14,14 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * 
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+ * You should have received a copy of the GNU General Public License
+ * along with GNU Radio; see the file COPYING.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street,
+ * Boston, MA 02110-1301, USA.
  */
+\#ifndef INCLUDED_SSP_${FUNNAME}_H
+\#define INCLUDED_SSP_${FUNNAME}_H
+\#include <ssp_api.h>
+\#include <gr_sync_block.h>
 
-#include <boost/test/unit_test.hpp>
-
-BOOST_AUTO_TEST_CASE(qa_howto_square2_ff_t1){
-    BOOST_CHECK_EQUAL(2 + 2, 4);
-    // TODO BOOST_* test macros here
-}
-
-BOOST_AUTO_TEST_CASE(qa_howto_square2_ff_t2){
-    BOOST_CHECK_EQUAL(2 + 2, 4);
-    // TODO BOOST_* test macros here
-}
+class ssp_square2_ff;
