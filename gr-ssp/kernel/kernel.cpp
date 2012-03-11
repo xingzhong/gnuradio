@@ -1,4 +1,4 @@
-#include <ssp_mysquare_ff.h>
+#include <ssp_myradio_ff.h>
 
 void ssp_kernel(const float *input, float *output, int N){
 	int i;
