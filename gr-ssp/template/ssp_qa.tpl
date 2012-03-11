@@ -35,7 +35,7 @@ class qa_ssp (gr_unittest.TestCase):
         self.tb = None
 
     def test_001_${funcName} (self):
-        src_data = (-3, 4, -5.5, 2, 3)
+        src_data = (-3, -2, -1, 0, 1, 2, 3, 4)
         expected_result = (9, 16, 30.25, 4, 9)
         src = gr.vector_source_f (src_data)
         sqr = ssp_swig.${Name} ()

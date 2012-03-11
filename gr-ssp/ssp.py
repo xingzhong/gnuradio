@@ -104,7 +104,7 @@ class sspTemplate:
 	os.system("rm -f ./lib/CMakeLists.txt")
         
 class Config:
-    def __init__(self, file):
+    def __init__(self, file, kfile):
         self.f = file
         tree = xml.parse(self.f)
         root = tree.getroot()
@@ -115,6 +115,10 @@ class Config:
         self.sizeout = root.find('size_out').text.strip()
         self.output = root.find('output').text.strip()
         self.input = root.find('input').text.strip()
+        k = open(kfile, 'r')
+        self.kernel = str(k.read())
+        k.close()
+
 
     def get(self):
         config = {}
@@ -130,11 +134,14 @@ class Config:
         config['t2'] = self.typeout
         config['Type1'] = TYPE[config['t1']]
         config['Type2'] = TYPE[config['t2']]
-        config['kernel'] = "ssp_kernel"
+        config['kernel'] = self.kernel
         funcName = self.func + "_" + config['Type1'] + config['Type2']
         config['Name'] = funcName
         config['FUNCNAME'] = ('ssp_' + funcName).upper()
         config['funcName'] = 'ssp_' + funcName
+        config['sizeout'] = self.sizeout
+        config['input'] = self.input
+        config['output'] = self.output
         
         return config
 
@@ -146,10 +153,16 @@ if __name__ == '__main__':
     (options, args) = parser.parse_args()
     if len(args) != 0:
 	raise SystemExit, 1
+    if not options.filename:
+        filename = "./example/c/kernel.c"
+    else:
+        filename = options.filename
 
-    config = Config("./config.xml")
+    config = Config("./config.xml", filename)
+    nameSpace = config.get()
 
-    tpl = sspTemplate(config.get())
+    tpl = sspTemplate(nameSpace)
+
     try:    
         # Run forever
         if options.clean:
