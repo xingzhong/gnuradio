@@ -22,6 +22,6 @@
 ########################################################################
 install(FILES
     api.h
-    ssp_mysquare_ff.h
+    ssp_myradio_ff.h
     DESTINATION include/ssp
 )

@@ -22,6 +22,7 @@ add_library(kernel-ssp kernel.cpp )
 
 SET_TARGET_PROPERTIES(kernel-ssp PROPERTIES LINKER_LANGUAGE CXX)
 
+set(CMAKE_CXX_FLAGS "-fPIC")
 # Install built library files
 install(TARGETS kernel-ssp
     LIBRARY DESTINATION lib${LIB_SUFFIX} # .so/.dylib file

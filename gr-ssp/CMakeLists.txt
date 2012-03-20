@@ -105,7 +105,7 @@ include_directories(
 )
 
 link_directories(
-    ${CMAKE_SOURCE_DIR}/kernel
+    #${CMAKE_SOURCE_DIR}/kernel
     ${Boost_LIBRARY_DIRS}
     ${GRUEL_LIBRARY_DIRS}
     ${GNURADIO_CORE_LIBRARY_DIRS}
