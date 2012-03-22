@@ -25,6 +25,7 @@
 
 from gnuradio import gr, gr_unittest
 import ssp_swig
+import numpy as np
 
 class qa_ssp (gr_unittest.TestCase):
 
@@ -48,6 +49,17 @@ class qa_ssp (gr_unittest.TestCase):
         print "output", result_data
         #self.assertFloatTuplesAlmostEqual (expected_result, result_data, 6)
 
+    def test_002_${funcName} (self):
+	N = 10000000
+	src_data = np.random.randn(N)
+        src = gr.vector_source_f (src_data)
+        sqr = ssp_swig.${Name} ()
+        dst = gr.vector_sink_f ()
+        self.tb.connect (src, sqr)
+        self.tb.connect (sqr, dst)
+        self.tb.run ()
+	result_data = dst.data()
+	print "%s number test finished"%N
         
 if __name__ == '__main__':
     gr_unittest.main ()

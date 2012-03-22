@@ -1,1 +1,1 @@
-out[i] = in[i];
+out[i] = in[i]*in[i];

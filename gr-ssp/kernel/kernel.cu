@@ -4,7 +4,7 @@
 __global__ void cuda_kernel(const float *in, float *out, int M){
 	int i = blockDim.x * blockIdx.x + threadIdx.x;
 	if (i<M){
-		out[i] = in[i];
+		out[i] = in[i]*in[i];
 
 	}
 }
