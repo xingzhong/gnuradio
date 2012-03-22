@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <cutil_inline.h>
-#include <shrQATest.h>
 
 // Variables
 float* h_A;
@@ -20,7 +18,6 @@ __global__ void VecAdd(const float* A,  float* B, int N)
 // Host code
 int main(int argc, char** argv)
 {
-    shrQAStart(argc, argv);
 
     printf("Vector Equal\n");
     int N = 50000;
@@ -35,12 +32,12 @@ int main(int argc, char** argv)
         h_A[i] = rand() / (float)RAND_MAX;
 
     // Allocate vectors in device memory
-    cutilSafeCall( cudaMalloc((void**)&d_A, size) );
-    cutilSafeCall( cudaMalloc((void**)&d_B, size) );
+     cudaMalloc((void**)&d_A, size);
+     cudaMalloc((void**)&d_B, size);
  
 
     // Copy vectors from host memory to device memory
-    cutilSafeCall( cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice) );
+    cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
     
     // Invoke kernel
     int threadsPerBlock = 256;
@@ -49,7 +46,7 @@ int main(int argc, char** argv)
    
     // Copy result from device memory to host memory
     // h_C contains the result in host memory
-    cutilSafeCall( cudaMemcpy(h_B, d_B, size, cudaMemcpyDeviceToHost) );
+    cudaMemcpy(h_B, d_B, size, cudaMemcpyDeviceToHost) ;
     printf("The h_A:\n");
     for( int i=0; i<100; i++)
     {printf("%f ",h_A[i]);}

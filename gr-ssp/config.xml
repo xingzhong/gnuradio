@@ -7,4 +7,5 @@
     <size_out>  M </size_out>
     <output> out </output>
     <input> in </input>
+    <lang> cuda </lang>
 </module>

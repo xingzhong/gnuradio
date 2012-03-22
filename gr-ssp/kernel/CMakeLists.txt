@@ -17,12 +17,24 @@
 
 # Setup library
 
+FIND_PACKAGE(CUDA)
 
-add_library(kernel-ssp kernel.cpp )
+if (CUDA_FOUND)
+        message("CUDA Found")
+else()
+        message("CUDA not Found")
+endif()
+
+
+CUDA_INCLUDE_DIRECTORIES(
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CUT_INCLUDE_DIR}
+)
+
+CUDA_ADD_LIBRARY(kernel-ssp kernel.cu OPTIONS -Xcompiler -fpic)
 
 SET_TARGET_PROPERTIES(kernel-ssp PROPERTIES LINKER_LANGUAGE CXX)
 
-set(CMAKE_CXX_FLAGS "-fPIC")
 # Install built library files
 install(TARGETS kernel-ssp
     LIBRARY DESTINATION lib${LIB_SUFFIX} # .so/.dylib file

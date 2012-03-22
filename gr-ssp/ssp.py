@@ -46,7 +46,11 @@ class sspTemplate:
         qa_tpl = open('./template/ssp_qa.tpl', 'r')
 	mk_tpl = open('./template/cmake.tpl', 'r')
 	api_tpl = open('./template/api.tpl', 'r')
-	ker_tpl = open('./template/kernel.tpl', 'r')
+	if self.nameSpace['lang'] == 'cpp':
+		ker_tpl = open('./template/kernel_cpp.tpl', 'r')
+	elif self.nameSpace['lang'] == 'cuda':
+		ker_tpl = open('./template/kernel_cu.tpl', 'r')
+		
 
         inc_tgt = open('./include/%s.h'%funcName, 'w')
         cc_tgt = open('./lib/%s.cc'%funcName, 'w')
@@ -54,7 +58,10 @@ class sspTemplate:
         qa_tgt = open('./python/qa_ssp.py', 'w')
 	mk_tgt = open('./lib/CMakeLists.txt', 'w')
 	api_tgt = open('./include/api.h', 'w')
-        ker_tgt = open('./kernel/kernel.cpp', 'w')
+	if self.nameSpace['lang'] == 'cpp':
+        	ker_tgt = open('./kernel/kernel.cpp', 'w')
+	elif self.nameSpace['lang'] == 'cuda':
+        	ker_tgt = open('./kernel/kernel.cu', 'w')
 
         inc = Template(inc_tpl.read(), searchList=[self.nameSpace])
         inc_tgt.write(str(inc))
@@ -115,6 +122,7 @@ class Config:
         self.sizeout = root.find('size_out').text.strip()
         self.output = root.find('output').text.strip()
         self.input = root.find('input').text.strip()
+        self.lang = root.find('lang').text.strip()
         k = open(kfile, 'r')
         self.kernel = str(k.read())
         k.close()
@@ -142,6 +150,7 @@ class Config:
         config['sizeout'] = self.sizeout
         config['input'] = self.input
         config['output'] = self.output
+	config['lang'] = self.lang
         
         return config
 
@@ -154,7 +163,7 @@ if __name__ == '__main__':
     if len(args) != 0:
 	raise SystemExit, 1
     if not options.filename:
-        filename = "./example/c/kernel.c"
+        filename = "./example/c/kernel"
     else:
         filename = options.filename
 
