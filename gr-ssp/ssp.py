@@ -104,11 +104,11 @@ class sspTemplate:
         f.close()
     
     def clean(self):
-        os.system("rm -f ./lib/*.cc")
+        os.system("rm -f ./lib/*")
         os.system("rm -f ./include/ssp*.h")
         os.system("rm -f ./python/qa*.py")
         os.system("rm -f ./swig/ssp*.i")
-	os.system("rm -f ./lib/CMakeLists.txt")
+        os.system("rm -f ./kernel/*.c*")
         
 class Config:
     def __init__(self, file, kfile):
