@@ -8,6 +8,7 @@
 # command after changing this file, to see if there are
 # any tracked files which get ignored after the change.
 #
+
 .*
 *.o
 *.a
@@ -49,4 +50,4 @@ make.log
 /build
 /run_tests.sh
 /setup_guile_test_env
-/gr-moduleName/*
+*moduleName/
