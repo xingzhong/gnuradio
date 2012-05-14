@@ -8,7 +8,7 @@
 %include "gnuradio.i"			// the common stuff
 
 //load generated python docstrings
-%include "${prefix}_swig_doc.i"
+//%include "${prefix}_swig_doc.i"
 
 
 %{

@@ -18,7 +18,7 @@ include(GrPython)
 \# Setup swig generation
 \########################################################################
 foreach(incdir \${GNURADIO_CORE_INCLUDE_DIRS})
-    list(APPEND GR_SWIG_INCLUDE_DIR \${incdir}/swig)
+    list(APPEND GR_SWIG_INCLUDE_DIRS \${incdir}/swig)
 endforeach(incdir)
 
 set(GR_SWIG_LIBRARIES gnuradio-${prefix})
@@ -38,6 +38,6 @@ GR_SWIG_INSTALL(TARGETS ${prefix}_swig DESTINATION \${GR_PYTHON_DIR}/${prefix})
 install(
     FILES
     ${prefix}_swig.i
-    \${CMAKE_CURRENT_BINARY_DIR}/${prefix}_swig_doc.i
+    \#\${CMAKE_CURRENT_BINARY_DIR}/${prefix}_swig_doc.i
     DESTINATION \${GR_INCLUDE_DIR}/${prefix}/swig
 )

@@ -14,7 +14,7 @@ nameSpace['prefix'] = "ssp"
 nameSpace['description'] = "Template according to the gr-howto-write-a-block-cmake in GNU-Radio"
 
 # local configurations
-nameSpace['IOType'] = "cc"
+nameSpace['IOType'] = "ff"
 
 
 # create dir if existes delete all

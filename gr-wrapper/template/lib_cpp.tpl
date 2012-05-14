@@ -18,7 +18,7 @@
  * a boost shared_ptr.  This is effectively the public constructor.
  */
 ${prefix}_${title}_${IOType}_sptr 
-${prefix}_${title}_${IOType} ()
+${prefix}_make_${title}_${IOType} ()
 {
   return gnuradio::get_initial_sptr(new ${prefix}_${title}_${IOType} ());
 }
