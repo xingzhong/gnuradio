@@ -1,0 +1,11 @@
+/*
+    the following variables can be used without defination in this file.
+    in  :   pointer of the input data
+    output  :   pointer of the output data
+    noutput_items   : # of output array
+*/
+
+    out[0] = in[0];
+    for (int i=1; i<noutput_items; i++){
+	    out[i] = out[i-1] + in[i];
+    }

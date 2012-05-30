@@ -14,8 +14,12 @@ nameSpace['prefix'] = "ssp"
 nameSpace['description'] = "Template according to the gr-howto-write-a-block-cmake in GNU-Radio"
 
 # local configurations
-nameSpace['IOType'] = "ff"
 
+nameSpace['InputType'] = "float"
+nameSpace['OutputType'] = "float"
+nameSpace['IOType'] = nameSpace['InputType'][0]+nameSpace['OutputType'][0]
+kernelFile = open('kernel.input', 'r')
+nameSpace['kernel'] = kernelFile.read()
 
 # create dir if existes delete all
 dirName = "../gr-" + nameSpace['title']

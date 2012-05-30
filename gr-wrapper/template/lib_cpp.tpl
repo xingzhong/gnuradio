@@ -64,9 +64,7 @@ ${prefix}_${title}_${IOType}::work (int noutput_items,
   const float *in = (const float *) input_items[0];
   float *out = (float *) output_items[0];
 
-  for (int i = 0; i < noutput_items; i++){
-    out[i] = in[i] * in[i];
-  }
+  ${kernel}
 
   // Tell runtime system how many output items we produced.
   return noutput_items;
